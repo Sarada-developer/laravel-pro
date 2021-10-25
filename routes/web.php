@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,13 +12,18 @@ use App\Http\Controllers\HomeController;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/',[HomeController::class,'index']);
-Route::get('/products',[HomeController::class,'products'])->name('products');
-Route::get('/about',[HomeController::class,'about'])->name('about');
-Route::get('/contact',[HomeController::class,'contact'])->name('contact');
-Route::get('/single-product',[HomeController::class,'single_product'])->name('single_product');
+Route::group(['middleware' => 'admin_auth'], function () {
+    Route::get('admin/dashboard', [AdminController::class, 'dashboard']);
+
+});
+
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/products', [HomeController::class, 'products'])->name('products');
+Route::get('/about', [HomeController::class, 'about'])->name('about');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::get('/single-product', [HomeController::class, 'single_product'])->name('single_product');
