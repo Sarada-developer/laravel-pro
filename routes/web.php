@@ -18,3 +18,7 @@ use App\Http\Controllers\HomeController;
 //     return view('welcome');
 // });
 Route::get('/',[HomeController::class,'index']);
+Route::get('/products',[HomeController::class,'products']);
+Route::get('/about',[HomeController::class,'about']);
+Route::get('/contact',[HomeController::class,'contact']);
+Route::get('/single-product',[HomeController::class,'single_product']);
