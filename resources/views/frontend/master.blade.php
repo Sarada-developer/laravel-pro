@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/fontawesome.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/tooplate-main.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/owl.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/flex-slider.css')}}">
 <!--
 Tooplate 2114 Pixie
 https://www.tooplate.com/view/2114-pixie
@@ -41,6 +42,8 @@ https://www.tooplate.com/view/2114-pixie
     <!-- Additional Scripts -->
     <script src="{{asset('assets/js/custom.js')}}"></script>
     <script src="{{asset('assets/js/owl.js')}}"></script>
+    <script src="{{asset('assets/js/isotope.js')}}"></script>
+    <script src="{{asset('assets/js/flex-slider.js')}}"></script>
 
 
     <script language = "text/Javascript"> 
