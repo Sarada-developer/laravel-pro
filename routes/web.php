@@ -29,3 +29,4 @@ Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/single-product', [HomeController::class, 'single_product'])->name('single_product');
 Route::get('/admin',[AdminController::class,'index']);
+Route::get('/admin/login',[AdminController::class,'admin_login']);
