@@ -19,7 +19,6 @@ class AdminController extends Controller
     public function auth(Request $req){
         $email = $req->post('email');
         $password = $req->post('password');
-     //    $result = Admin::where(['email'=>$email,'password'=>$password])->get();
         $result = Admin::where(['email'=>$email])->first();
          if($result){
              if(Hash::check($req->post('password'),$result->password)){
@@ -34,22 +33,20 @@ class AdminController extends Controller
              $req->session()->flash('error','please enter valid login details');
              return redirect('admin');
          }
-     
-         // if(isset($result[0]->id)){
-             
-         // }else{
-            
-         // }
         }
-
         public function dashboard(){
             return view('backend/admin_index');
         }
-
-
-
-
-    public function admin_login(){
+        public function admin_login(){
         return view('backend/admin_login');
+        }
+        public function admin_category(){
+            return view('backend/admin_category');
+        }
+        public function admin_products(){
+            return view('backend/admin_products');
+        }
+        public function add_category(){
+            return view('backend/add_category');
+        }
     }
-}
