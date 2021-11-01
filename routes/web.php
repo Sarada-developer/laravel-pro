@@ -11,6 +11,8 @@ Route::group(['middleware' => 'admin_auth'], function () {
     Route::get('/admin/add_category',[AdminController::class,'add_category'])->name('admin.addCategory');
     Route::get('/admin/products',[AdminController::class,'admin_products']);
     Route::get('/admin/add_products',[AdminController::class,'add_products'])->name('admin.addProducts');
+    Route::post('/admin/insert_category',[AdminController::class,'insert_category'])->name('admin.insertCategory');
+    Route::post('/admin/insert_products',[AdminController::class,'insert_products'])->name('admin.insertProduct');
     Route::get('admin/logout', function () {
         session()->forget('ADMIN_LOGIN');
         session()->forget('ADMIN_ID');

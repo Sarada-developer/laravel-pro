@@ -7,7 +7,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Validation</h1>
+            <h1>Add Product</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -27,52 +27,56 @@
           <div class="col-md-12">
             <!-- jquery validation -->
             <div class="card card-primary">
-              <div class="card-header">
-                <h3 class="card-title">Quick Example <small>jQuery Validation</small></h3>
-              </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form id="quickForm">
+              <form method="post" action="{{route('admin.insertProduct')}}" enctype="multipart/form-data">
+              @csrf
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Product Name</label>
-                    <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                    <input type="text" name="product_name" class="form-control"  placeholder="Enter Product Name">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Product Category</label>
-                    <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                    <!-- <input type="text" name="category" class="form-control"  placeholder="Enter Product Category"> -->
+                    <select class="form-control select2" name="category_id" style="width: 100%;" >
+                    <option value="" selected="selected">Please Select The Category</option>
+                    @foreach(App\Models\Category::orderBy('category_name','asc')->get() as $cate)
+                    <option value="{{$cate->id}}">{{$cate->category_name}}</option>
+                    @endforeach
+                    </select>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Product Price</label>
-                    <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                    <input type="number" name="price" class="form-control"  placeholder="Enter Product Price">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Product Description</label>
-                    <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                    <input type="text" name="description" class="form-control"  placeholder="Enter Product Description">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Product Image</label>
-                    <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                    <input type="file" name="image[]" class="form-control"  placeholder="Enter Product Image">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Product SKU</label>
-                    <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                    <input type="text" name="SKU" class="form-control"  placeholder="Enter Product SKU">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Product Slug</label>
-                    <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                    <input type="text" name="slug" class="form-control"  placeholder="Enter Product Slug">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Product Stock</label>
-                    <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                    <input type="number" name="stock" class="form-control"  placeholder="Enter Product Stock">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Product Weight</label>
-                    <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                    <input type="number" name="Weight" class="form-control"  placeholder="Enter Product Weight">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Product Dimension</label>
-                    <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                    <input type="number" name="dimension" class="form-control"  placeholder="Enter Product Dimension">
                   </div>
                 </div>
                 <!-- /.card-body -->

@@ -86,11 +86,11 @@
 <!-- Page specific script -->
 <script>
 $(function () {
-  $.validator.setDefaults({
-    submitHandler: function () {
-      alert( "Form successful submitted!" );
-    }
-  });
+  // $.validator.setDefaults({
+  //   submitHandler: function () {
+  //     alert( "Form successful submitted!" );
+  //   }
+  // });
   $('#quickForm').validate({
     rules: {
       email: {

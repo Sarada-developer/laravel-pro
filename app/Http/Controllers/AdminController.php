@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Category;
+use App\Models\Product;
+
 
 class AdminController extends Controller
 {
@@ -51,5 +54,34 @@ class AdminController extends Controller
         }
         public function add_products(){
             return view('backend/add_products');
+        }
+        public function insert_category(Request $request){
+            $category= new Category();
+            $category->category_name=$request->category_name;
+            $category->save();
+            return back()->with('success',"Category has been added succesfully");
+        }
+        public function insert_products(Request $request){
+            $product=new Product();
+            $product->product_name=$request->product_name;
+            $product->category=$request->category;
+            $product->price=$request->price;
+            $product->description=$request->description;
+            $files=[];
+            if($request->hasfile('image')){
+                foreach($request->file('image') as $img){
+                    $img_name=time().rand(1,100).'.'.$img->extension();
+                    $img->move(public_path('files'),$img_name);
+                    $files[]=$img_name;
+                }
+            }
+            $product->image=$files;
+            $product->SKU=$request->SKU;
+            $product->slug=$request->slug;
+            $product->stock=$request->stock;
+            $product->Weight=$request->Weight;
+            $product->dimension=$request->dimension;
+            $product->save();
+            return back()->with('success',"Product has been added succesfully");
         }
     }
