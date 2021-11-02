@@ -1,4 +1,4 @@
-@extends('backend.admin_master')
+@extends('seller.seller_master')
 @section('container')
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">

@@ -1,4 +1,4 @@
-@extends('backend.admin_master')
+@extends('seller.seller_master')
 @section('container')
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -7,7 +7,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Category Table</h1>
+            <h1>Product Table</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -28,7 +28,7 @@
 
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title"><a class="btn btn-block bg-gradient-info" href="{{route('admin.addCategory')}}">Add Category</a></h3>
+                <h3 class="card-title"><a class="btn btn-block bg-gradient-info" href="{{route('seller.addProducts')}}">Add Product</a></h3>
                 <!-- <button type="button" class="btn btn-block bg-gradient-info">Add Category</button> -->
               </div>
               <!-- /.card-header -->
@@ -37,29 +37,46 @@
                   <thead>
                   <tr>
                     <th>S.L. No.</th>
+                    <th>Product</th>
                     <th>Category</th>
-                    <th>Created At</th>
-                    <th>Updated At</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                    <th>Image</th>
+                    <th>SKU</th>
+                    <th>Slug</th>
+                    <th>Stock</th>
+                    <!-- <th>Created At</th>
+                    <th>Updated At</th> -->
                     <th>Buttons</th>
                   </tr>
                   </thead>
                   <tbody>
-                  @foreach($category as $cat)
                   <tr>
-                    <td>{{$cat->id}}</td>
-                    <td>{{$cat->category_name}}</td>
-                    <td>{{$cat->created_at}}</td>
-                    <td>{{$cat->updated_at}}</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                     <td><button type="button" class="btn btn-block bg-gradient-success">Success</button> <button type="button" class="btn btn-block bg-gradient-danger">Danger</button></td>
                   </tr>
-                  @endforeach
                   </tbody>
                   <tfoot>
                   <tr>
                   <th>S.L. No.</th>
+                    <th>Product</th>
                     <th>Category</th>
-                    <th>Created At</th>
-                    <th>Updated At</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                    <th>Image</th>
+                    <th>SKU</th>
+                    <th>Slug</th>
+                    <th>Stock</th>
+                    <!-- <th>Created At</th>
+                    <th>Updated At</th> -->
                     <th>Buttons</th>
                   </tr>
                   </tfoot>

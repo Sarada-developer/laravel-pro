@@ -14,7 +14,6 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $middleware = [
-        // \App\Http\Middleware\TrustHosts::class,
         \Illuminate\Session\Middleware\StartSession::class,
         \App\Http\Middleware\TrustProxies::class,
         \Fruitcake\Cors\HandleCors::class,
@@ -23,7 +22,6 @@ class Kernel extends HttpKernel
         \Illuminate\Session\Middleware\StartSession::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
-        // \App\Http\Middleware\UserAuth::class,
     ];
 
     /**
@@ -50,6 +48,9 @@ class Kernel extends HttpKernel
         'admin_auth' => [
             \App\Http\Middleware\AdmitAuth::class,
         ],
+        'seller_auth' => [
+            \App\Http\Middleware\SellerAuth::class,
+        ]
     ];
 
     /**
