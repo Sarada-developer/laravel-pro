@@ -38,7 +38,7 @@ Route::group(['middleware' => 'seller_auth'], function () {
         return redirect('seller');
     });
 });
-Route::get('seller', [SellerController::class, 'index']);
+Route::get('seller', [SellerController::class, 'index'])->name('seller');
 Route::post('seller/auth', [SellerController::class, 'auth'])->name('seller.auth');
 
 // user

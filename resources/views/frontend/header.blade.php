@@ -32,6 +32,12 @@
             <li class="nav-item">
               <a class="nav-link" href="{{route('contact')}}">Contact Us</a>
             </li>
+            <li class="nav-item"  style = "position:relative; left:320px;">
+              <a class="nav-link" href="{{route('contact')}}">User Login</a>
+            </li>
+            <li class="nav-item" style = "position:relative; left:320px;">
+              <a class="nav-link" href="{{route('seller')}}">Seller Login</a>
+            </li>
           </ul>
         </div>
       </div>
