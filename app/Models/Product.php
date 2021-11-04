@@ -9,10 +9,15 @@ class Product extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'pro_img'
+    ];
+
     public function setFilenamesAttribute($value)
     {
-        $this->attributes['image'] = json_encode($value);
+        $this->attributes['pro_img'] = json_encode($value);
     }
+
 
     public function category(){
 

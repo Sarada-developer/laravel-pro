@@ -1,5 +1,7 @@
 @extends('backend.admin_master')
 @section('container')
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -54,10 +56,20 @@
                     <label for="exampleInputEmail1">Product Description</label>
                     <input type="text" name="description" class="form-control"  placeholder="Enter Product Description">
                   </div>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Product Image</label>
-                    <input type="file" name="image[]" class="form-control"  placeholder="Enter Product Image">
+                  <div class="input-group hdtuto control-group lst increment" >
+                  <input type="file" name="pro_img[]" class="myfrm form-control">
+                  <div class="input-group-btn"> 
+                    <button class="btn btn-success" type="button"><i class="fldemo glyphicon glyphicon-plus"></i>Add</button>
                   </div>
+                </div>
+                <div class="clone hide">
+                  <div class="hdtuto control-group lst input-group" style="margin-top:10px">
+                    <input type="file" name="pro_img[]" class="myfrm form-control">
+                    <div class="input-group-btn"> 
+                      <button class="btn btn-danger" type="button"><i class="fldemo glyphicon glyphicon-remove"></i> Remove</button>
+                    </div>
+                  </div>
+                </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Product SKU</label>
                     <input type="text" name="SKU" class="form-control"  placeholder="Enter Product SKU">

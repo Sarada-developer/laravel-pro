@@ -65,6 +65,17 @@
 <script src="{{asset('admin_assets/dist/js/demo.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('admin_assets/dist/js/pages/dashboard2.js')}}"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+      $(".btn-success").click(function(){ 
+          var lsthmtl = $(".clone").html();
+          $(".increment").after(lsthmtl);
+      });
+      $("body").on("click",".btn-danger",function(){ 
+          $(this).parents(".hdtuto").remove();
+      });
+    });
+</script>
 <!-- Page specific script -->
 <script>
   $(function () {

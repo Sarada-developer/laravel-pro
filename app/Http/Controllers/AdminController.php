@@ -7,6 +7,7 @@ use App\Models\Admin;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Category;
 use App\Models\Product;
+use Illuminate\Support\Facades\Validator;
 
 
 class AdminController extends Controller
@@ -62,21 +63,50 @@ class AdminController extends Controller
             $category->save();
             return back()->with('success',"Category has been added succesfully");
         }
+
         public function insert_products(Request $request){
-            $product=new Product();
+
+            $this->validate($request, [
+                'product_name'=>'product_name',
+                'category_id' => 'required',
+                'price'=>'required',
+                'description' => 'required',
+                'pro_img' => 'required',
+                'pro_img.*' => 'image',
+                'SKU'=>'required',
+                'slug' => 'required',
+                'stock' => 'required',
+                'Weight'=>'required',
+                'dimension'=>'required'
+
+            ]);
+
+            $product= new Product();
             $product->product_name=$request->product_name;
-            $product->category=$request->category;
+            $product->category_id=$request->category_id;
             $product->price=$request->price;
             $product->description=$request->description;
-            $files=[];
-            if($request->hasfile('image')){
-                foreach($request->file('image') as $img){
-                    $img_name=time().rand(1,100).'.'.$img->extension();
-                    $img->move(public_path('files'),$img_name);
-                    $files[]=$img_name;
+
+            // $files=[];
+            // if($request->hasfile('image')){
+            //     foreach($request->file('image') as $img){
+            //         $img_name=time().rand(1,100).'.'.$img->extension();
+            //         $img->move(public_path('files'),$img_name);
+            //         $files[]=$img_name;
+            //     }
+            // }
+            $files = [];
+            if($request->hasfile('pro_img'))
+             {
+                foreach($request->file('pro_img') as $file)
+                {
+                    $name = time().rand(1,100).'.'.$file->extension();
+                    $file->move(public_path('files'), $name);  
+                    $files[] = $name;  
                 }
-            }
-            $product->image=$files;
+             }
+             $product->pro_img = $files;
+            // $product->pro_img=$files;
             $product->SKU=$request->SKU;
             $product->slug=$request->slug;
             $product->stock=$request->stock;
