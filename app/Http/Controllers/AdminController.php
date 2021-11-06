@@ -7,8 +7,7 @@ use App\Models\Admin;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Category;
 use App\Models\Product;
-use Illuminate\Support\Facades\Validator;
-
+use Validator;
 
 class AdminController extends Controller
 {
@@ -64,15 +63,50 @@ class AdminController extends Controller
             return back()->with('success',"Category has been added succesfully");
         }
 
+        public function CategoryDelete($id){
+
+            Category::findOrFail($id)->delete();
+    
+            $notification = array(
+                'message' => 'Category Deleted Successfully',
+                'alert-type' => 'success'
+            );
+    
+            return redirect()->back()->with($notification);
+    
+        } 
+
+
+        public function CategoryEdit($id){
+            $category = Category::findOrFail($id);
+            return view('backend.edit_category',compact('category'));
+    
+        }
+
+        public function category_update(Request $request, $id){
+
+            $request->validate([
+                'category_name' => 'required',
+                // 'category_slug' => 'required|unique:categories',
+            ]);
+            $cate =Category::find($id);
+            $cate->category_name = $request->category_name;
+            // $cate->category_slug = $request->category_slug;
+            $cate->save();
+            $request->session()->flash('message','category Updated');
+            return redirect()->back()->with("update");
+        
+        }
+
         public function insert_products(Request $request){
 
             $this->validate($request, [
-                'product_name'=>'product_name',
+                'product_name'=>'required',
                 'category_id' => 'required',
                 'price'=>'required',
                 'description' => 'required',
                 'pro_img' => 'required',
-                'pro_img.*' => 'image',
+                // 'pro_img.*' => 'image',
                 'SKU'=>'required',
                 'slug' => 'required',
                 'stock' => 'required',
@@ -81,7 +115,7 @@ class AdminController extends Controller
 
             ]);
 
-            $product= new Product();
+            $product= new Product;
             $product->product_name=$request->product_name;
             $product->category_id=$request->category_id;
             $product->price=$request->price;

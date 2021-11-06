@@ -7,8 +7,11 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => 'admin_auth'], function () {
     Route::get('admin/dashboard', [AdminController::class, 'dashboard']);
     Route::get('admin/users', [UserController::class, 'UserData']);
-    Route::get('/admin/category',[AdminController::class,'admin_category']);
+    Route::get('/admin/category',[AdminController::class,'admin_category'])->name('all.category');
     Route::get('/admin/add_category',[AdminController::class,'add_category'])->name('admin.addCategory');
+    Route::get('/admin/edit/{id}', [AdminController::class, 'CategoryEdit'])->name('category.edit');
+    Route::post('/admin/update/{id}', [AdminController::class, 'category_update'])->name('category.update');
+    Route::get('/admin/delete/{id}', [AdminController::class, 'CategoryDelete'])->name('category.delete');
     Route::get('/admin/products',[AdminController::class,'admin_products']);
     Route::get('/admin/add_products',[AdminController::class,'add_products'])->name('admin.addProducts');
     Route::post('/admin/insert_category',[AdminController::class,'insert_category'])->name('admin.insertCategory');

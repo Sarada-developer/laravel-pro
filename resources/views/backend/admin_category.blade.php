@@ -29,7 +29,6 @@
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title"><a class="btn btn-block bg-gradient-info" href="{{route('admin.addCategory')}}">Add Category</a></h3>
-                <!-- <button type="button" class="btn btn-block bg-gradient-info">Add Category</button> -->
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -50,19 +49,13 @@
                     <td>{{$cat->category_name}}</td>
                     <td>{{$cat->created_at}}</td>
                     <td>{{$cat->updated_at}}</td>
-                    <td><button type="button" class="btn btn-block bg-gradient-success">Success</button> <button type="button" class="btn btn-block bg-gradient-danger">Danger</button></td>
+                    <td> <a href="{{route('category.edit',$cat->id)}}" class="btn btn-success"><i class="far fa-edit"></i></a>
+                    <a href="{{route('category.delete',$cat->id)}}" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+                    </td>
                   </tr>
                   @endforeach
                   </tbody>
-                  <tfoot>
-                  <tr>
-                  <th>S.L. No.</th>
-                    <th>Category</th>
-                    <th>Created At</th>
-                    <th>Updated At</th>
-                    <th>Buttons</th>
-                  </tr>
-                  </tfoot>
+                  
                 </table>
               </div>
               <!-- /.card-body -->

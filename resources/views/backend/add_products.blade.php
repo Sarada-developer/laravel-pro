@@ -34,13 +34,13 @@
               <form method="post" action="{{route('admin.insertProduct')}}" enctype="multipart/form-data">
               @csrf
                 <div class="card-body">
-                  <div class="form-group">
+                  <div class="form-group col-md-6">
                     <label for="exampleInputEmail1">Product Name</label>
-                    <input type="text" name="product_name" class="form-control"  placeholder="Enter Product Name">
+                    <input type="text" name="product_name" class="form-control" required  placeholder="Enter Product Name">
                   </div>
-                  <div class="form-group">
+                  <div class="form-group col-md-6">
                     <label for="exampleInputEmail1">Product Category</label>
-                    <!-- <input type="text" name="category" class="form-control"  placeholder="Enter Product Category"> -->
+                    <!-- <input type="text" name="category" class="form-control" required  placeholder="Enter Product Category"> -->
                     <select class="form-control select2" name="category_id" style="width: 100%;" >
                     <option value="" selected="selected">Please Select The Category</option>
                     @foreach(App\Models\Category::orderBy('category_name','asc')->get() as $cate)
@@ -48,47 +48,48 @@
                     @endforeach
                     </select>
                   </div>
-                  <div class="form-group">
+                  <div class="form-group col-md-6">
                     <label for="exampleInputEmail1">Product Price</label>
-                    <input type="number" name="price" class="form-control"  placeholder="Enter Product Price">
+                    <input type="number" name="price" class="form-control" required  placeholder="Enter Product Price">
                   </div>
-                  <div class="form-group">
+                  <div class="form-group col-md-6">
                     <label for="exampleInputEmail1">Product Description</label>
-                    <input type="text" name="description" class="form-control"  placeholder="Enter Product Description">
+                    <input type="text" name="description" class="form-control" required  placeholder="Enter Product Description">
                   </div>
-                  <div class="input-group hdtuto control-group lst increment" >
+                <div class="input-group hdtuto control-group lst increment col-md-6" >
                   <input type="file" name="pro_img[]" class="myfrm form-control">
                   <div class="input-group-btn"> 
                     <button class="btn btn-success" type="button"><i class="fldemo glyphicon glyphicon-plus"></i>Add</button>
                   </div>
                 </div>
                 <div class="clone hide">
-                  <div class="hdtuto control-group lst input-group" style="margin-top:10px">
+                  <div class="hdtuto control-group lst input-group col-md-6" style="margin-top:10px">
                     <input type="file" name="pro_img[]" class="myfrm form-control">
                     <div class="input-group-btn"> 
                       <button class="btn btn-danger" type="button"><i class="fldemo glyphicon glyphicon-remove"></i> Remove</button>
                     </div>
                   </div>
                 </div>
-                  <div class="form-group">
+                <br>
+                  <div class="form-group col-md-6">
                     <label for="exampleInputEmail1">Product SKU</label>
-                    <input type="text" name="SKU" class="form-control"  placeholder="Enter Product SKU">
+                    <input type="text" name="SKU" class="form-control" required  placeholder="Enter Product SKU">
                   </div>
-                  <div class="form-group">
+                  <div class="form-group col-md-6">
                     <label for="exampleInputEmail1">Product Slug</label>
-                    <input type="text" name="slug" class="form-control"  placeholder="Enter Product Slug">
+                    <input type="text" name="slug" class="form-control" required  placeholder="Enter Product Slug">
                   </div>
-                  <div class="form-group">
+                  <div class="form-group col-md-6">
                     <label for="exampleInputEmail1">Product Stock</label>
-                    <input type="number" name="stock" class="form-control"  placeholder="Enter Product Stock">
+                    <input type="number" name="stock" class="form-control" required  placeholder="Enter Product Stock">
                   </div>
-                  <div class="form-group">
+                  <div class="form-group col-md-6">
                     <label for="exampleInputEmail1">Product Weight</label>
-                    <input type="number" name="Weight" class="form-control"  placeholder="Enter Product Weight">
+                    <input type="number" name="Weight" class="form-control" required  placeholder="Enter Product Weight">
                   </div>
-                  <div class="form-group">
+                  <div class="form-group col-md-6">
                     <label for="exampleInputEmail1">Product Dimension</label>
-                    <input type="number" name="dimension" class="form-control"  placeholder="Enter Product Dimension">
+                    <input type="number" name="dimension" class="form-control" required  placeholder="Enter Product Dimension">
                   </div>
                 </div>
                 <!-- /.card-body -->
