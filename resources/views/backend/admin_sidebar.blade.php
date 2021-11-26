@@ -58,6 +58,14 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="/admin/coupon" class="nav-link">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>
+                Coupon
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="/admin/products" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
               <p>

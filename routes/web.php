@@ -2,20 +2,31 @@
 use App\Http\Controllers\SellerController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CouponController;
+
 use Illuminate\Support\Facades\Route;
-// admin auth
+// Admin auth
 Route::group(['middleware' => 'admin_auth'], function () {
-    Route::get('admin/dashboard', [AdminController::class, 'dashboard']);
+    Route::get('admin/dashboard', [AdminController::class, 'dashboard']); 
     Route::get('admin/users', [UserController::class, 'UserData']);
+// Admin Category
     Route::get('/admin/category',[AdminController::class,'admin_category'])->name('all.category');
     Route::get('/admin/add_category',[AdminController::class,'add_category'])->name('admin.addCategory');
+    Route::post('/admin/insert_category',[AdminController::class,'insert_category'])->name('admin.insertCategory');
     Route::get('/admin/edit/{id}', [AdminController::class, 'CategoryEdit'])->name('category.edit');
     Route::post('/admin/update/{id}', [AdminController::class, 'category_update'])->name('category.update');
     Route::get('/admin/delete/{id}', [AdminController::class, 'CategoryDelete'])->name('category.delete');
+// Admin Coupon
+    Route::get('/admin/coupon',[CouponController::class,'index'])->name('all.coupon');
+    Route::get('/admin/coupon/manage_coupon',[CouponController::class,'manage_coupon'])->name('admin.addCoupon');
+    Route::get('/admin/coupon/manage_coupon/{id}',[CouponController::class,'manage_coupon'])->name('admin.editCoupon');
+    Route::post('/admin/coupon/manage_coupon_process',[CouponController::class,'manage_coupon_process'])->name('coupon.manage_coupon_process');
+    Route::get('/admin/coupon/delete/{id}',[CouponController::class,'delete'])->name('admin.deleteCoupon');
+// Admin Product
     Route::get('/admin/products',[AdminController::class,'admin_products']);
     Route::get('/admin/add_products',[AdminController::class,'add_products'])->name('admin.addProducts');
-    Route::post('/admin/insert_category',[AdminController::class,'insert_category'])->name('admin.insertCategory');
     Route::post('/admin/insert_products',[AdminController::class,'insert_products'])->name('admin.insertProduct');
+// Admin logout
     Route::get('admin/logout', function () {
         session()->forget('ADMIN_LOGIN');
         session()->forget('ADMIN_ID');
@@ -23,10 +34,10 @@ Route::group(['middleware' => 'admin_auth'], function () {
         return redirect('admin');
     });
 });
+// Admin login
 Route::get('admin', [AdminController::class, 'index']);
 Route::post('admin/auth', [AdminController::class, 'auth'])->name('admin.auth');
-
-// seller auth
+// Seller auth
 Route::group(['middleware' => 'seller_auth'], function () {
     Route::get('seller/dashboard', [SellerController::class,'dashboard']);
     Route::get('seller/users', [UserController::class, 'UserData']);
@@ -41,10 +52,11 @@ Route::group(['middleware' => 'seller_auth'], function () {
         return redirect('seller');
     });
 });
+// Seller login
 Route::get('seller', [SellerController::class, 'index'])->name('seller');
 Route::post('seller/auth', [SellerController::class, 'auth'])->name('seller.auth');
 
-// user
+// User
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/products', [HomeController::class, 'products'])->name('products');
 Route::get('/about', [HomeController::class, 'about'])->name('about');

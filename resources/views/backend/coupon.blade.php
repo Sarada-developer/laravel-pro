@@ -1,5 +1,6 @@
 @extends('backend.admin_master')
 @section('container')
+{{session('message')}}
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -7,7 +8,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Category Table</h1> 
+            <h1>Coupon Table</h1> 
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -28,7 +29,7 @@
 
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title"><a class="btn btn-block bg-gradient-info" href="{{route('admin.addCategory')}}">Add Category</a></h3>
+                <h3 class="card-title"><a class="btn btn-block bg-gradient-info" href="{{route('admin.addCoupon')}}">Add Coupon</a></h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -36,21 +37,21 @@
                   <thead>
                   <tr>
                     <th>S.L. No.</th>
-                    <th>Category</th>
-                    <th>Created At</th>
-                    <th>Updated At</th>
+                    <th>Title</th>
+                    <th>Code</th>
+                    <th>Value</th>
                     <th>Buttons</th>
                   </tr>
                   </thead>
                   <tbody>
-                  @foreach($category as $cat)
+                  @foreach($data as $cou)
                   <tr>
-                    <td>{{$cat->id}}</td>
-                    <td>{{$cat->category_name}}</td>
-                    <td>{{$cat->created_at}}</td>
-                    <td>{{$cat->updated_at}}</td>
-                    <td> <a href="{{route('category.edit',$cat->id)}}" class="btn btn-success"><i class="far fa-edit"></i></a>
-                    <a href="{{route('category.delete',$cat->id)}}" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+                    <td>{{$cou->id}}</td>
+                    <td>{{$cou->title}}</td>
+                    <td>{{$cou->code}}</td>
+                    <td>{{$cou->value}}</td>
+                    <td> <a href="{{route('admin.editCoupon',$cou->id)}}" class="btn btn-success"><i class="far fa-edit"></i></a>
+                    <a href="{{route('admin.deleteCoupon',$cou->id)}}" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
                     </td>
                   </tr>
                   @endforeach
