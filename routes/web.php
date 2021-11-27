@@ -17,11 +17,14 @@ Route::group(['middleware' => 'admin_auth'], function () {
     Route::post('/admin/update/{id}', [AdminController::class, 'category_update'])->name('category.update');
     Route::get('/admin/delete/{id}', [AdminController::class, 'CategoryDelete'])->name('category.delete');
 // Admin Coupon
+
     Route::get('/admin/coupon',[CouponController::class,'index'])->name('all.coupon');
-    Route::get('/admin/coupon/manage_coupon',[CouponController::class,'manage_coupon'])->name('admin.addCoupon');
-    Route::get('/admin/coupon/manage_coupon/{id}',[CouponController::class,'manage_coupon'])->name('admin.editCoupon');
-    Route::post('/admin/coupon/manage_coupon_process',[CouponController::class,'manage_coupon_process'])->name('coupon.manage_coupon_process');
+    Route::get('/admin/coupon/manage_coupon',[CouponController::class,'addCoupon'])->name('admin.addCoupon');
+    Route::post('/admin/coupon/manage_coupon',[CouponController::class,'insert_Coupon'])->name('add.add_Coupon');
+    Route::get('/admin/coupon/manage_coupon/{id}',[CouponController::class,'CouponEdit'])->name('admin.editCoupon');
+    Route::post('/admin/coupon/manage_coupon_process/{id}',[CouponController::class,'Coupon_update'])->name('coupon.manage_coupon_process');
     Route::get('/admin/coupon/delete/{id}',[CouponController::class,'delete'])->name('admin.deleteCoupon');
+
 // Admin Product
     Route::get('/admin/products',[AdminController::class,'admin_products']);
     Route::get('/admin/add_products',[AdminController::class,'add_products'])->name('admin.addProducts');

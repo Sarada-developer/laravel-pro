@@ -56,6 +56,7 @@ class AdminController extends Controller
         public function add_products(){
             return view('backend/add_products');
         }
+        
         public function insert_category(Request $request){
             $category= new Category();
             $category->category_name=$request->category_name;

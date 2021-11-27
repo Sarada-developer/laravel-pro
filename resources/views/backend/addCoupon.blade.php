@@ -41,24 +41,24 @@
 
               <!-- /.card-header -->
               <!-- form start -->
-              <form method="POST" action="{{route('coupon.manage_coupon_process',$coupon->id)}}">
+              <form id="quickForm" method="POST" action="{{route('add.add_Coupon')}}">
                 @csrf
                 <div class="card-body">
                   <div class="form-group">
                     <label for="title">Coupon title</label>
-                    <input type="title" name="title" class="form-control" id="title" value="{{$coupon->title}}" placeholder="Enter coupon title">
+                    <input type="title" name="title" class="form-control" id="title"  placeholder="Enter coupon title">
                   </div>
                 </div>
                 <div class="card-body">
                   <div class="form-group">
                 <label for="code">Coupon code</label>
-                    <input type="code" name="code" class="form-control" id="code" value="{{$coupon->code}}" placeholder="Enter coupon code">
+                    <input type="code" name="code" class="form-control" id="code"  placeholder="Enter coupon code">
                   </div>
                 </div>
                 <div class="card-body">
                   <div class="form-group">
                     <label for="value">Coupon value</label>
-                    <input type="value" name="value" class="form-control" id="value" value="{{$coupon->value}}" placeholder="Enter coupon value">
+                    <input type="value" name="value" class="form-control" id="value"  placeholder="Enter coupon value">
                   </div>
                 </div>
                 <!-- /.card-body -->

@@ -44,7 +44,7 @@
                   </tr>
                   </thead>
                   <tbody>
-                  @foreach($data as $cou)
+                  @foreach($result as $cou)
                   <tr>
                     <td>{{$cou->id}}</td>
                     <td>{{$cou->title}}</td>

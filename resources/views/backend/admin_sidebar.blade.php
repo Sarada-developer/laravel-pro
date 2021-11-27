@@ -58,7 +58,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/admin/coupon" class="nav-link">
+            <a href="{{route('all.coupon')}}" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>
                 Coupon
