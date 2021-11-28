@@ -118,9 +118,9 @@ class AdminController extends Controller
                 'technical_specification' => 'required',
                 'uses'=>'required',
                 'warranty'=>'required'
-
             ]);
-             $product= new Product;
+            
+            $product= new Product;
             $product->product_name=$request->product_name;
             $product->category=$request->category;
             $product->slug=$request->slug;
@@ -138,6 +138,7 @@ class AdminController extends Controller
             $product->save();
             return redirect('admin/products');
         }
+
         public function productEdit($id){
             $product = Coupon::findOrFail($id);
             return view('backend.edit_product',compact('product'));

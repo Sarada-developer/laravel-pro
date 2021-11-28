@@ -31,7 +31,7 @@
             <div class="card card-primary">
               <!-- /.card-header -->
               <!-- form start -->
-              <form method="post" action="{{route('admin.insertProduct')}}" enctype="multipart/form-data">
+              <form method="POST" action="{{route('admin.insertProduct')}}" enctype="multipart/form-data">
               @csrf 
                 <div class="card-body">
                   <div class="form-group col-md-6">
@@ -99,8 +99,8 @@
                     <textarea name="uses" class="form-control" required  placeholder="Enter Product Uses"></textarea>
                   </div>
                   <div class="form-group col-md-6">
-                    <label for="warrenty">Warrenty</label>
-                    <input type="text" name="warrenty" class="form-control" required  placeholder="Enter Product Warrenty">
+                    <label for="warranty">warranty</label>
+                    <input type="text" name="warranty" class="form-control" required  placeholder="Enter Product Warranty">
                   </div>
                 </div>
                 <!-- /.card-body -->

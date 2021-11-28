@@ -48,11 +48,11 @@
                   <tbody>
                     @foreach($products as $pro)
                   <tr>
-                    <td>$pro->id</td>
-                    <td>$pro->product_name</td>
-                    <td>$pro->slug</td>
-                    <td>$pro->price</td>
-                    <td>$pro->desc</td>
+                    <td>{{$pro->id}}</td>
+                    <td>{{$pro->product_name}}</td>
+                    <td>{{$pro->slug}}</td>
+                    <td>{{$pro->price}}</td>
+                    <td>{{$pro->desc}}</td>
                     <!-- <td>$pro->image</td> -->
                     <td>
                     @if($pro->status==0)
@@ -63,8 +63,8 @@
                       class="btn btn-info">Active</button>&nbsp;
                     @endif
                       <a href="" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="View"><i class="fa fa-eye"></i></a>&nbsp
-                      <a href="{{route('admin.editProduct')}}" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Edit"><i class="far fa-edit"></i></a>&nbsp
-                    <a href="{{route('admin.deleteProduct')}}" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Delete"><i class="far fa-trash-alt"></i></a></td>
+                      <a href="{{route('admin.editProduct',$pro->id)}}" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Edit"><i class="far fa-edit"></i></a>&nbsp
+                    <a href="{{route('admin.deleteProduct',$pro->id)}}" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Delete"><i class="far fa-trash-alt"></i></a></td>
                   </tr>
                   @endforeach
                   </tbody>
