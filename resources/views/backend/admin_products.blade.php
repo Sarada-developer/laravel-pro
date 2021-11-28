@@ -1,4 +1,5 @@
 @extends('backend.admin_master')
+@section('product_select','active')
 @section('container')
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -29,7 +30,6 @@
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title"><a class="btn btn-block bg-gradient-info" href="{{route('admin.addProducts')}}">Add Product</a></h3>
-                <!-- <button type="button" class="btn btn-block bg-gradient-info">Add Category</button> -->
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -38,45 +38,44 @@
                   <tr>
                     <th>S.L. No.</th>
                     <th>Product</th>
-                    <th>Category</th>
+                    <th>Slug</th>
                     <th>Price</th>
                     <th>Description</th>
-                    <th>Image</th>
-                    <th>SKU</th>
-                    <th>Slug</th>
-                    <th>Stock</th>
-                    <!-- <th>Created At</th>
-                    <th>Updated At</th> -->
+                    <!-- <th>Image</th> -->
                     <th>Buttons</th>
                   </tr>
                   </thead>
                   <tbody>
+                    @foreach($products as $pro)
                   <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><button type="button" class="btn btn-block bg-gradient-success">Success</button> <button type="button" class="btn btn-block bg-gradient-danger">Danger</button></td>
+                    <td>$pro->id</td>
+                    <td>$pro->product_name</td>
+                    <td>$pro->slug</td>
+                    <td>$pro->price</td>
+                    <td>$pro->desc</td>
+                    <!-- <td>$pro->image</td> -->
+                    <td>
+                    @if($pro->status==0)
+                      <a href="{{url('admin/products/status/1')}}/{{$pro->id}}"><button
+                      class="btn btn-warning">Deactive</button>&nbsp;
+                      @elseif($pro->status==1)
+                      <a href="{{url('admin/products/status/0')}}/{{$pro->id}}"><button
+                      class="btn btn-info">Active</button>&nbsp;
+                    @endif
+                      <a href="" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="View"><i class="fa fa-eye"></i></a>&nbsp
+                      <a href="{{route('admin.editProduct')}}" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Edit"><i class="far fa-edit"></i></a>&nbsp
+                    <a href="{{route('admin.deleteProduct')}}" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Delete"><i class="far fa-trash-alt"></i></a></td>
                   </tr>
+                  @endforeach
                   </tbody>
                   <tfoot>
                   <tr>
                   <th>S.L. No.</th>
                     <th>Product</th>
-                    <th>Category</th>
+                    <th>Slug</th>
                     <th>Price</th>
                     <th>Description</th>
-                    <th>Image</th>
-                    <th>SKU</th>
-                    <th>Slug</th>
-                    <th>Stock</th>
-                    <!-- <th>Created At</th>
-                    <th>Updated At</th> -->
+                    <!-- <th>Image</th> -->
                     <th>Buttons</th>
                   </tr>
                   </tfoot>

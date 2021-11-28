@@ -32,31 +32,26 @@
               <!-- /.card-header -->
               <!-- form start -->
               <form method="post" action="{{route('admin.insertProduct')}}" enctype="multipart/form-data">
-              @csrf
+              @csrf 
                 <div class="card-body">
                   <div class="form-group col-md-6">
-                    <label for="exampleInputEmail1">Product Name</label>
+                    <label for="product_name">Product Name</label>
                     <input type="text" name="product_name" class="form-control" required  placeholder="Enter Product Name">
                   </div>
                   <div class="form-group col-md-6">
                     <label for="exampleInputEmail1">Product Category</label>
-                    <!-- <input type="text" name="category" class="form-control" required  placeholder="Enter Product Category"> -->
-                    <select class="form-control select2" name="category_id" style="width: 100%;" >
-                    <option value="" selected="selected">Please Select The Category</option>
+                   <select class="form-control select2" name="category" style="width: 100%;" >
+                    <option value="" selected="selected">--- Select Category---</option>
                     @foreach(App\Models\Category::orderBy('category_name','asc')->get() as $cate)
                     <option value="{{$cate->id}}">{{$cate->category_name}}</option>
                     @endforeach
                     </select>
                   </div>
                   <div class="form-group col-md-6">
-                    <label for="exampleInputEmail1">Product Price</label>
-                    <input type="number" name="price" class="form-control" required  placeholder="Enter Product Price">
+                    <label for="slug">Slug</label>
+                    <input type="text" name="slug" class="form-control" required  placeholder="Enter Product Slug">
                   </div>
-                  <div class="form-group col-md-6">
-                    <label for="exampleInputEmail1">Product Description</label>
-                    <input type="text" name="description" class="form-control" required  placeholder="Enter Product Description">
-                  </div>
-                <div class="input-group hdtuto control-group lst increment col-md-6" >
+                <!-- <div class="input-group hdtuto control-group lst increment col-md-6" >
                   <input type="file" name="pro_img[]" class="myfrm form-control">
                   <div class="input-group-btn"> 
                     <button class="btn btn-success" type="button"><i class="fldemo glyphicon glyphicon-plus"></i>Add</button>
@@ -69,27 +64,43 @@
                       <button class="btn btn-danger" type="button"><i class="fldemo glyphicon glyphicon-remove"></i> Remove</button>
                     </div>
                   </div>
-                </div>
+                </div> -->
                 <br>
-                  <div class="form-group col-md-6">
-                    <label for="exampleInputEmail1">Product SKU</label>
-                    <input type="text" name="SKU" class="form-control" required  placeholder="Enter Product SKU">
+                <div class="form-group col-md-6">
+                    <label for="brand">Product Brand</label>
+                    <input type="text" name="brand" class="form-control" required  placeholder="Enter Product Brand">
                   </div>
                   <div class="form-group col-md-6">
-                    <label for="exampleInputEmail1">Product Slug</label>
-                    <input type="text" name="slug" class="form-control" required  placeholder="Enter Product Slug">
+                    <label for="model">Product Model</label>
+                    <input type="text" name="model" class="form-control" required  placeholder="Enter Product Model">
+                  </div>
+                <div class="form-group col-md-6">
+                    <label for="price">Product Price</label>
+                    <input type="number" name="price" class="form-control" required  placeholder="Enter Product Price">
                   </div>
                   <div class="form-group col-md-6">
-                    <label for="exampleInputEmail1">Product Stock</label>
-                    <input type="number" name="stock" class="form-control" required  placeholder="Enter Product Stock">
+                    <label for="short_desc">Short Description</label>
+                    <textarea name="short_desc" class="form-control" required  placeholder="Enter Short Description"></textarea>
                   </div>
                   <div class="form-group col-md-6">
-                    <label for="exampleInputEmail1">Product Weight</label>
-                    <input type="number" name="Weight" class="form-control" required  placeholder="Enter Product Weight">
+                    <label for="desc">Product Description</label>
+                    <textarea name="desc" class="form-control" required  placeholder="Enter Product Description"></textarea>
                   </div>
                   <div class="form-group col-md-6">
-                    <label for="exampleInputEmail1">Product Dimension</label>
-                    <input type="number" name="dimension" class="form-control" required  placeholder="Enter Product Dimension">
+                    <label for="keywords">Product Keywords</label>
+                    <input type="text" name="keywords" class="form-control" required  placeholder="Enter Product Keywords">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="technical_specification">Technical Specification</label>
+                    <input type="text" name="technical_specification" class="form-control" required  placeholder="Enter Product Technical Specification">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="uses">Uses</label>
+                    <textarea name="uses" class="form-control" required  placeholder="Enter Product Uses"></textarea>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="warrenty">Warrenty</label>
+                    <input type="text" name="warrenty" class="form-control" required  placeholder="Enter Product Warrenty">
                   </div>
                 </div>
                 <!-- /.card-body -->

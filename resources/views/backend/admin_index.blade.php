@@ -1,4 +1,5 @@
 @extends('backend.admin_master')
+@section('dashboard_select','active')
 @section('container')
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">

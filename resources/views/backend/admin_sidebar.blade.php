@@ -9,7 +9,7 @@
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
       <img src="{{asset('admin_assets/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">Admin</span>
     </a>
 
     <!-- Sidebar -->
@@ -41,33 +41,33 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
-            <a href="/admin" class="nav-link active">
+          <li class="@yield('dashboard_select')">
+            <a href="/admin" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
               </p>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="@yield('category_select')">
             <a href="/admin/category" class="nav-link">
-              <i class="nav-icon fas fa-edit"></i>
+            <i class="fas fa-list"></i>
               <p>
                 Category
               </p>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="@yield('coupon_select')">
             <a href="{{route('all.coupon')}}" class="nav-link">
-              <i class="nav-icon fas fa-edit"></i>
+            <i class="fas fa-tags"></i>
               <p>
                 Coupon
               </p>
             </a>
           </li>
-          <li class="nav-item">
+          <li classclass="@yield('products_select')">
             <a href="/admin/products" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
+            <i class="fas fa-list"></i>
               <p>
                 Products
               </p>

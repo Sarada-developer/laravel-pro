@@ -1,4 +1,5 @@
 @extends('backend.admin_master')
+@section('category_select','active')
 @section('container')
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -49,7 +50,15 @@
                     <td>{{$cat->category_name}}</td>
                     <td>{{$cat->created_at}}</td>
                     <td>{{$cat->updated_at}}</td>
-                    <td> <a href="{{route('category.edit',$cat->id)}}" class="btn btn-success"><i class="far fa-edit"></i></a>
+                    <td>
+                    @if($cat->status==0)
+                      <a href="{{url('admin/category/status/1')}}/{{$cat->id}}"><button
+                      class="btn btn-warning">Deactive</button>&nbsp;
+                      @elseif($cat->status==1)
+                      <a href="{{url('admin/category/status/0')}}/{{$cat->id}}"><button
+                      class="btn btn-info">Active</button>&nbsp;
+                    @endif
+                    <a href="{{route('category.edit',$cat->id)}}" class="btn btn-success"><i class="far fa-edit"></i></a>
                     <a href="{{route('category.delete',$cat->id)}}" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
                     </td>
                   </tr>

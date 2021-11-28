@@ -1,4 +1,5 @@
 @extends('backend.admin_master')
+@section('coupon_select','active')
 @section('container')
 {{session('message')}}
   <!-- Content Wrapper. Contains page content -->
