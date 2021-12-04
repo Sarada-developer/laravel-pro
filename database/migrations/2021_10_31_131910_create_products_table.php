@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Schema; 
 
 class CreateProductsTable extends Migration
 {
@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('product_name');
             $table->integer('category');
             $table->string('slug');
-            // $table->string('image');
+            $table->string('image');
             $table->string('brand');
             $table->string('model');
             $table->integer('price'); 

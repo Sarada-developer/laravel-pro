@@ -9,7 +9,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Add Product</h1>
+            <h1>Add Product</h1> 
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -51,6 +51,10 @@
                     <label for="slug">Slug</label>
                     <input type="text" name="slug" class="form-control" required  placeholder="Enter Product Slug">
                   </div>
+                  <div class="form-group col-md-6">
+                    <label for="image">Image</label>
+                    <input type="file" name="image" class="form-control">
+                  </div>
                 <!-- <div class="input-group hdtuto control-group lst increment col-md-6" >
                   <input type="file" name="pro_img[]" class="myfrm form-control">
                   <div class="input-group-btn"> 
@@ -89,7 +93,7 @@
                   <div class="form-group col-md-6">
                     <label for="keywords">Product Keywords</label>
                     <input type="text" name="keywords" class="form-control" required  placeholder="Enter Product Keywords">
-                  </div>
+                  </div> 
                   <div class="form-group col-md-6">
                     <label for="technical_specification">Technical Specification</label>
                     <input type="text" name="technical_specification" class="form-control" required  placeholder="Enter Product Technical Specification">

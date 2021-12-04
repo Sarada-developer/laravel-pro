@@ -8,7 +8,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Product Table</h1>
+            <h1>Product Table</h1> 
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -41,7 +41,7 @@
                     <th>Slug</th>
                     <th>Price</th>
                     <th>Description</th>
-                    <!-- <th>Image</th> -->
+                    <th>Image</th>
                     <th>Buttons</th>
                   </tr>
                   </thead>
@@ -53,7 +53,9 @@
                     <td>{{$pro->slug}}</td>
                     <td>{{$pro->price}}</td>
                     <td>{{$pro->desc}}</td>
-                    <!-- <td>$pro->image</td> -->
+                    <td>@if($pro->image!='')
+                      <img width="100px" src="{{asset('storage/media/'.$pro->image)}}"/>
+                    @endif</td>
                     <td>
                     @if($pro->status==0)
                       <a href="{{url('admin/products/status/1')}}/{{$pro->id}}"><button
@@ -75,7 +77,7 @@
                     <th>Slug</th>
                     <th>Price</th>
                     <th>Description</th>
-                    <!-- <th>Image</th> -->
+                    <th>Image</th>
                     <th>Buttons</th>
                   </tr>
                   </tfoot>

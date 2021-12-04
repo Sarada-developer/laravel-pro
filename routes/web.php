@@ -4,9 +4,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CouponController;
 
-use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Route; 
 
-// Admin auth
+// Admin auth 
 Route::group(['middleware' => 'admin_auth'], function () {
     Route::get('admin/dashboard', [AdminController::class, 'dashboard']); 
     Route::get('admin/users', [UserController::class, 'UserData']);
@@ -34,8 +34,8 @@ Route::group(['middleware' => 'admin_auth'], function () {
     Route::post('/admin/insert_products',[AdminController::class,'insert_products'])->name('admin.insertProduct');
     Route::get('/admin/product/product/{id}',[AdminController::class,'productEdit'])->name('admin.editProduct');
     Route::post('/admin/product/manage_product_process/{id}',[AdminController::class,'product_update'])->name('product.manage_product_process');
-    Route::get('/admin/product/delete/{id}',[AdminController::class,'delete'])->name('admin.deleteProduct');
-
+    Route::get('/admin/product/delete/{id}',[AdminController::class,'product_delete'])->name('admin.deleteProduct');
+    Route::get('/admin/products/status/{status}/{id}',[AdminController::class,'product_status']);
 // Admin logout
     Route::get('admin/logout', function () {
         session()->forget('ADMIN_LOGIN');

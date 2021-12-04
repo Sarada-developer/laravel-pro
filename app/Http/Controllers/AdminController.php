@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+ 
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use Illuminate\Support\Facades\Hash;
@@ -63,18 +63,6 @@ class AdminController extends Controller
             $category->status=1;
             $category->save();
             return back()->with('success',"Category has been added succesfully");
-        }
-       public function CategoryDelete($id){
-
-            Category::findOrFail($id)->delete();
-    
-            $notification = array(
-                'message' => 'Category Deleted Successfully',
-                'alert-type' => 'success'
-            );
-    
-            return redirect()->back()->with($notification);
-    
         } 
       public function CategoryEdit($id){
             $category = Category::findOrFail($id);
@@ -93,6 +81,24 @@ class AdminController extends Controller
             $request->session()->flash('message','category Updated');
             return redirect()->back()->with("update"); 
         }
+        public function CategoryDelete($id){
+
+            Category::findOrFail($id)->delete();
+    
+            $notification = array(
+                'message' => 'Category Deleted Successfully',
+                'alert-type' => 'success'
+            );
+            return redirect()->back()->with($notification);
+        }
+        public function status(Request $request,$status,$id)
+        {
+            $data = Category::find($id);
+            $data->status = $status;
+            $data->save();
+            $request->session()->flash('message','Status Updated');
+            return redirect('admin/category');
+        }
 
         // admin products
         public function admin_products(){
@@ -107,7 +113,7 @@ class AdminController extends Controller
             $this->validate($request, [
                 'product_name'=>'required',
                 'category' => 'required',
-                // 'image' => 'required',
+                'pro_img' => 'required|mimes:jpeg,jpg,png',
                 'slug'=>'required',
                 'brand'=>'required',
                 'model'=>'required',
@@ -124,7 +130,15 @@ class AdminController extends Controller
             $product->product_name=$request->product_name;
             $product->category=$request->category;
             $product->slug=$request->slug;
-            // $product->image=$request->image;
+
+            if($request->hasfile('image')){
+                $image=$request->file('image');
+                $ext=$image->extension();
+                $image_name=time().'.'.$ext;
+                $image->storeAs('/public/media',$image_name);
+                $product->image=$image_name;
+            }
+
             $product->brand=$request->brand;
             $product->model=$request->model;
             $product->price=$request->price;
@@ -135,12 +149,66 @@ class AdminController extends Controller
             $product->uses=$request->uses;
             $product->warranty=$request->warranty;
             $product->status=1;
+            // echo '<pre>';
+            // print_r($product);
+            // die();
             $product->save();
+           
             return redirect('admin/products');
         }
 
         public function productEdit($id){
-            $product = Coupon::findOrFail($id);
+            $product = Product::findOrFail($id);
             return view('backend.edit_product',compact('product'));
+        }
+        
+        public function product_update(Request $request,$id){
+            $product=Product::find($id);
+            $product->product_name=$request->product_name;
+            $product->category=$request->category;
+            $product->slug=$request->slug;
+            $product->image=$request->image;
+            $product->brand=$request->brand;
+            $product->model=$request->model;
+            $product->price=$request->price;
+            $product->short_desc=$request->short_desc;
+            $product->desc=$request->desc;
+            $product->keywords=$request->keywords;
+            $product->technical_specification=$request->technical_specification;
+            $product->uses=$request->uses;
+            $product->warranty=$request->warranty;
+            $product->save();
+            $request->session()->flash('message','Product updated');
+            return redirect('admin/products');
+        }
+        public function product_status(Request $request,$status,$id){
+            $request->validate([
+                'product_name' => 'required',
+                'category' => 'mimes:jpeg,jpg,png',
+                'slug' => 'required',
+                'image' => 'required',
+                'brand' => 'required',
+                'model' => 'required',
+                'price' => 'required',
+                'short_desc' => 'required',
+                'desc' => 'required',
+                'keywords' => 'required',                
+                'technical_specification' => 'required',
+                'uses' => 'required',
+                'warranty' => 'required',
+                'slug' => 'required',
+            ]);
+            $data=Product::find($id);
+            $data->status=$status;
+            $data->save();
+            return redirect('admin/products');
+        }
+        public function product_delete($id){
+            Product::findOrFail($id)->delete();
+            $notification=array(
+                'message'=>'Product successfully deleted',
+                'alert-type'=>'success'
+            );
+            return redirect('admin/products');
         }
     }
