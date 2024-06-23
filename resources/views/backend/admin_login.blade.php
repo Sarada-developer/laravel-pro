@@ -27,7 +27,6 @@
       <div class="alert alert-danger" role="alert">
       {{session('error')}}
       </div>
-
       <form action="{{route('admin.auth')}}" method="post">
         @csrf
         <div class="input-group mb-3">
@@ -44,7 +43,7 @@
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
             </div>
-          </div>
+            </div>
         </div>
         <div class="row">
           <div class="col-8">

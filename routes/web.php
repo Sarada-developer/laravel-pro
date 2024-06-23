@@ -5,7 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CouponController;
 
 use Illuminate\Support\Facades\Route; 
-
+ 
 // Admin auth 
 Route::group(['middleware' => 'admin_auth'], function () {
     Route::get('admin/dashboard', [AdminController::class, 'dashboard']); 

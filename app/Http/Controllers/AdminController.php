@@ -48,7 +48,7 @@ class AdminController extends Controller
             return view('backend/admin_index');
         }
 
-    //    admin category
+    //    admin category 
         public function admin_category(){
             $category = Category::all();
             return view('backend/admin_category',compact('category'));
@@ -67,7 +67,7 @@ class AdminController extends Controller
       public function CategoryEdit($id){
             $category = Category::findOrFail($id);
             return view('backend.edit_category',compact('category'));
-    
+     
         }
         public function category_update(Request $request, $id){
 

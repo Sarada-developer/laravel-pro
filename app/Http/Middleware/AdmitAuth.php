@@ -15,7 +15,7 @@ class AdmitAuth
      * @return mixed
      */
     public function handle(Request $request, Closure $next)
-    {
+    { 
         if($request->session()->has('ADMIN_LOGIN')){
 
         }else{
